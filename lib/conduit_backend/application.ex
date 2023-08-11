@@ -8,6 +8,7 @@ defmodule ConduitBackend.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      ConduitBackend.App,
       # Start the Telemetry supervisor
       ConduitBackendWeb.Telemetry,
       # Start the Ecto repository

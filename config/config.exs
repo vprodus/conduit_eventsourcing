@@ -25,6 +25,16 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :conduit_backend, ConduitBackend.App,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.EventStore,
+    event_store: ConduitBackend.EventStore
+  ],
+  pubsub: :local,
+  registry: :local
+
+config :conduit_backend, event_stores: [ConduitBackend.EventStore]
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 

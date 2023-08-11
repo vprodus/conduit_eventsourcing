@@ -5,9 +5,17 @@ config :conduit_backend, ConduitBackend.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "conduit_backend_dev",
+  database: "conduit_readstore_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
+config :conduit_backend, ConduitBackend.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "postgres",
+  database: "conduit_eventstore_dev",
+  hostname: "localhost",
   pool_size: 10
 
 # For development, we disable any cache and enable

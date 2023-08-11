@@ -19,7 +19,7 @@ defmodule ConduitBackend.MixProject do
   def application do
     [
       mod: {ConduitBackend.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :eventstore]
     ]
   end
 
