@@ -7,5 +7,8 @@ defmodule ConduitBackendWeb.Router do
 
   scope "/api", ConduitBackendWeb do
     pipe_through :api
+
+    post "/users", UserController, :create
+
   end
 end
