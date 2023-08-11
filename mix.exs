@@ -19,7 +19,7 @@ defmodule ConduitBackend.MixProject do
   def application do
     [
       mod: {ConduitBackend.Application, []},
-      extra_applications: [:logger, :runtime_tools, :eventstore]
+      extra_applications: [:logger, :runtime_tools, :eventstore, :crypto]
     ]
   end
 
@@ -41,8 +41,9 @@ defmodule ConduitBackend.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:commanded_eventstore_adapter, "~> 1.4"},
-      {:commanded, "~> 1.4"}
-
+      {:commanded, "~> 1.4"},
+      {:ex_machina, "~> 2.7", only: :test},
+      {:cors_plug, "~> 3.0"}
     ]
   end
 
@@ -54,6 +55,7 @@ defmodule ConduitBackend.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      "event_store.reset": ["event_store.drop", "event_store.create", "event_store.init"],
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],

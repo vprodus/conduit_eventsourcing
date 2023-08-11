@@ -9,8 +9,16 @@ config :conduit_backend, ConduitBackend.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "conduit_backend_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "conduit_readstore_test",
   pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
+
+config :conduit_backend, ConduitBackend.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "postgres",
+  database: "conduit_eventstore_test",
+  hostname: "localhost",
   pool_size: 10
 
 # We don't run a server during test. If one is required,

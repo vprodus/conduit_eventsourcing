@@ -7,18 +7,11 @@ defmodule ConduitBackend.AccountsFixtures do
   @doc """
   Generate a user.
   """
-  def user_fixture(attrs \\ %{}) do
-    {:ok, user} =
-      attrs
-      |> Enum.into(%{
-        image: "some image",
-        username: "some username",
-        email: "some email",
-        hashed_password: "some hashed_password",
-        bio: "some bio"
-      })
-      |> ConduitBackend.Accounts.create_user()
+  import ConduitBackend.Factory
 
-    user
+  alias ConduitBackend.Accounts
+
+  def user_fixture(attrs \\ %{}) do
+    build(:user, attrs) |> Accounts.create_user()
   end
 end

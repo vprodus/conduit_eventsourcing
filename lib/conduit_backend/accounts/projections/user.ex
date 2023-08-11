@@ -1,4 +1,4 @@
-defmodule ConduitBackend.Accounts.User do
+defmodule ConduitBackend.Accounts.Projections.User do
   use Ecto.Schema
   import Ecto.Changeset
 

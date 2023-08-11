@@ -2,7 +2,7 @@ defmodule ConduitBackendWeb.UserController do
   use ConduitBackendWeb, :controller
 
   alias ConduitBackend.Accounts
-  alias ConduitBackend.Accounts.User
+  alias ConduitBackend.Accounts.Projections.User
 
   action_fallback ConduitBackendWeb.FallbackController
 
@@ -15,7 +15,7 @@ defmodule ConduitBackendWeb.UserController do
     with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/users/#{user}")
+      # |> put_resp_header("location", ~p"/api/users/#{user}")
       |> render(:show, user: user)
     end
   end

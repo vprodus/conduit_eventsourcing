@@ -6,7 +6,7 @@ defmodule ConduitBackend.Accounts do
   import Ecto.Query, warn: false
   alias ConduitBackend.Repo
 
-  alias ConduitBackend.Accounts.User
+  alias ConduitBackend.Accounts.Projections.User
 
   @doc """
   Returns the list of users.
